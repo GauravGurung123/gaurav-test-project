@@ -20,7 +20,7 @@ Route::get('/', function () {
 }
 );
 
-Route::group(['middleware' => 'usercheck:test', 'name' => 'user.'], function(){
+Route::group(['middleware' => 'usercheck:test', 'as' => 'user.'], function(){
     Route::get('/user', [UserController::class, 'index'])->name('index'); 
     Route::get('/user/{name}', [UserController::class, 'show'])->name('show'); 
 });
