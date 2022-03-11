@@ -3,6 +3,9 @@
 // namespace App\Http\Controllers;
 
 use App\Http\Controllers\UserController;
+
+// use App\Http\Controllers\Category\CategoryController;
+// use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +28,14 @@ Route::group(['middleware' => 'usercheck:test', 'as' => 'user.'], function(){
     Route::get('/user/{name}', [UserController::class, 'show'])->name('show'); 
 });
 
-Route::group(['namespace' => 'Category', 'prefix'=>'product'], function () {
-    Route::resource('categories', CategoryController::class); 
-}); 
+// Route::group(['namespace' => 'Category', 'prefix'=>'product'], function () {
+//     Route::resource('categories', CategoryController::class); 
+// }); 
 
+// Assignment 2
+Route::group(['namespace'=>'Category'], function(){
+    Route::resources([
+        'categories' => 'CategoryController',
+        'products' => 'ProductController',
+    ]);
+});  

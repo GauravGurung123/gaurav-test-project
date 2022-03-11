@@ -6,21 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct($model)
-    {
-        $this->middleware('auth');
-        $this->middleware('only')->only('index');
-        $this->middleware('except')->except('destroy');
-    }
-
     public function index()
     {
         $products = Product::all();
@@ -44,7 +36,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string|max:255',
