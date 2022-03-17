@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -13,7 +15,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return "hello user";
+        $users = User::all();
+        
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -57,7 +61,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -69,7 +74,26 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'alpha', 'max:255', 'min:3'],
+            'age' => ['required', 'digits_between:2,3'],
+            'email' => Rule::unique('users', 'email')->ignore($user->id),
+            'bio' => ['nullable', 'string'],
+            'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:6048'],
+        ]);
+
+        if(isset($request->image)) {
+            $imgName = time().$request->image->getClientOriginalName();
+            $request->image->move(public_path('images'), $imgName);
+            $validatedData['image'] = $imgName;
+
+        }
+
+        $user->update($validatedData);
+
+        return redirect('/home');
     }
 
     /**
@@ -80,6 +104,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect('/home');
     }
 }
