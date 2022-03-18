@@ -31,4 +31,9 @@ class UserValidationRequest extends FormRequest
             'password' => ['required', 'string', 'min:4', 'confirmed'],
         ];
     }
+
+    public function messages()
+    {
+        // return [];
+    }
 }

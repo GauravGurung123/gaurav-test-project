@@ -16,7 +16,7 @@
     <div class="container my-5">
         <nav class="my-n3 mx-n3">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/home">Home</a></li>
                 <li class="breadcrumb-item"><a href="/post">Post</a></li>
                 <li class="breadcrumb-item active">Create</li>
             </ol>
@@ -44,7 +44,7 @@
 
                     <div class="form-group">
                         <label for="image">Upload Image</label>
-                        <input class="form-control" type="file" id="formFile" name="image" value="{{ old('image') }}">
+                        <input class="form-control @error('image') is-invalid @enderror" type="file" id="formFile" name="image" value="{{ old('image') }}">
 
                         @error('image')
                         <div class="invalid-feedback">{{ $message }}</div>

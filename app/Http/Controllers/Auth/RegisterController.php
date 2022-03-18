@@ -52,11 +52,14 @@ class RegisterController extends Controller
         // dd($data);
         return Validator::make($data, [
             'name' => ['required', 'string', 'alpha', 'max:255', 'min:3'],
-            'age' => ['required', 'digits_between:2,3'],
+            'age' => ['required', 'integer','digits_between:2,3'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'image' => ['nullable', 'mimes:jpg,png,jpeg', 'max:6048'],
             'password' => ['required', 'string', 'min:4', 'confirmed'],
-        ]);
+        ], $messages=[
+            'name.alpha' => 'your name cannot contain number',
+            'age.integer' => 'Age must be a number',
+        ] );
     }
 
     /**

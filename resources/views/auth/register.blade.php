@@ -45,7 +45,7 @@
 
                             <div class="col-md-6">
                                 
-                                <textarea class="form-control" id="bio" rows="3"  name="bio" value="{{ old('bio') }}" autocomplete="bio" autofocus></textarea>
+                                <textarea class="form-control @error('bio') is-invalid @enderror" id="bio" rows="3"  name="bio" value="{{ old('bio') }}" autocomplete="bio" autofocus></textarea>
                                 
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                             <label for="formFile" class="col-md-4 col-form-label text-md-end">{{ __('Upload Image') }}</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="file" id="formFile" name="image" value="{{ old('image') }}">
+                                <input class="form-control @error('image') is-invalid @enderror" type="file" id="formFile" name="image" value="{{ old('image') }}">
 
                                 @error('image')
                                     <span class="invalid-feedback" role="alert">

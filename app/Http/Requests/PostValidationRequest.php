@@ -30,4 +30,9 @@ class PostValidationRequest extends FormRequest
             'status' => ['string'] ,     
         ];
     }
+    public function messages()
+    {
+        // return ['title.alpha' => 'the title must be aplhabet'];
+        // return ['image.mimes' => 'the image file must be jpg and png'];
+    }
 }
