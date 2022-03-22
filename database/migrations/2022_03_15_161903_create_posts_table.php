@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('image')->nullable();
             $table->text('description');
-            $table->string('status')->default('draft');
+            $table->boolean('status')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
