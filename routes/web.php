@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Post\PostController;
+
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front.index');
 }
 );
 
@@ -35,9 +35,4 @@ Route::put('/user/{id}', [UserController::class, 'update']);
 Route::delete('/user/{id}/destroy', [App\Http\Controllers\UserController::class, 'destroy']);
 
 // Post Controller
-Route::get('/post', [PostController::class, 'index']);  
-Route::get('/post/create', [PostController::class, 'create']); 
-Route::post('/post', [PostController::class, 'store']);
-Route::get('/post/{id}/edit', [PostController::class, 'edit']);
-Route::put('/post/{id}', [PostController::class, 'update']);  
-Route::delete('/post/{id}/destroy', [PostController::class, 'destroy']);
+include('post.php');

@@ -12,7 +12,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -21,9 +21,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all();
         
-        return view('post.index', compact('posts'));
+        // return view('front.pages.post', compact('posts'));
+        return view('front.pages.posts');
     }
 
     /**

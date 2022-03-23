@@ -2,10 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeDataTypeOfStatusFieldToPostsTable extends Migration
+class AddPositionToPostsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,10 +14,8 @@ class ChangeDataTypeOfStatusFieldToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('status')->default('draft')->change();
+            $table->string('position')->nullable();
         });
-
-        // DB::statement('ALTER TABLE posts MODIFY COLUMN status VARCHAR(255)');
     }
 
     /**
@@ -29,10 +26,7 @@ class ChangeDataTypeOfStatusFieldToPostsTable extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->boolean('status')->nullable()->change();
+            $table->dropColumn('position');
         });
-
-        // DB::statement('ALTER TABLE posts MODIFY COLUMN status TINYINT');
-
     }
 }
