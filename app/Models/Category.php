@@ -6,22 +6,16 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Category extends Model
 {
-    use HasFactory;
-    
+    use HasFactory;    
+
     use Sluggable;
-    
+
     protected $fillable = [
-        'title',
-        'user_id',
-        'category_id',
-        'image',
-        'description',
-        'status',
-        'position',
-        'slug',
-    ];
+		'title',
+        'slug'
+	];
 
     public function getRouteKeyName()
     {
@@ -43,12 +37,7 @@ class Post extends Model
         ];
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function posts(){
+        return $this->hasMany(Post::class);
     }
-    
-    public function category(){
-        return $this->belongsTo(Category::class);
-    }
-
 }

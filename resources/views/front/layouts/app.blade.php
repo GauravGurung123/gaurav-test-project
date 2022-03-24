@@ -12,7 +12,7 @@ Classic Template
 http://www.templatemo.com/tm-488-classic
 -->
     <!-- load stylesheets -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->                                      <!-- Bootstrap style -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">                                      <!-- Bootstrap style -->
     <link rel="stylesheet" href="{{asset('css/templatemo-style.css')}}">                                   <!-- Templatemo style -->
 
@@ -35,7 +35,7 @@ http://www.templatemo.com/tm-488-classic
         @include('front.partials.footer')
         <!-- =========================== End Footer Section =============================== -->
 
-        <!-- load JS files -->
+        <!-- load JS files -->    <!-- Scripts -->
         <script src="{{asset('js/jquery-1.11.3.min.js')}}"></script>             <!-- jQuery (https://jquery.com/download/) -->
         <script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap, http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h --> 
         <script src="{{asset('js/bootstrap.min.js')}}"></script>                 <!-- Bootstrap (http://v4-alpha.getbootstrap.com/) -->

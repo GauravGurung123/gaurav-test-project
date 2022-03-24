@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostValidationRequest;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -21,10 +22,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        // $posts = Post::all();
+        $posts = Post::all();
+        $categories = Category::all();
         
-        // return view('front.pages.post', compact('posts'));
-        return view('front.pages.posts');
+        return view('front.pages.posts', compact(['posts', 'categories']));
+     
     }
 
     /**
@@ -34,7 +36,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        $categories = Category::all();
+
+        return view('post.create', compact('categories'));
     }
 
     /**
@@ -47,6 +51,7 @@ class PostController extends Controller
     {
         // dd(Auth::id());
         $userId = Auth::id();
+        
         $request->validated();
         
         // dd($request->status);
@@ -60,12 +65,14 @@ class PostController extends Controller
         Post::create([
             'title' => $request->input('title'),
             'user_id' => $userId,
+            'category_id' => $request->category,
             'image' => $imgName,
             'description' => $request->input('description') ,
             'status' => $request->status,
+            'position' => NULL,
             ]
         );
-        return redirect('/post');
+        return redirect('/');
     }
 
     /**
@@ -74,11 +81,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($title)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::where('slug',$title)->first();
         
-        return view('post.view_post', compact('post'));
+        return view('front.pages.single-post', compact('post'));
         
     }
 

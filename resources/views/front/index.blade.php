@@ -14,60 +14,9 @@
                 <p class="tm-subtitle">Suspendisse ut magna vel velit cursus tempor ut nec nunc. Mauris vehicula, augue in tincidunt porta, purus ipsum blandit massa.</p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-
-                <div class="tm-content-box">
-                    <img src="{{ asset('images/tm-img-310x180-1.jpg') }}" alt="Image" class="tm-margin-b-20 img-fluid">
-                    <h4 class="tm-margin-b-20 tm-gold-text">Lorem ipsum dolor #1</h4>
-                    <p class="tm-margin-b-20">Aenean cursus tellus mauris, quis
-                    consequat mauris dapibus id. Donec
-                    scelerisque porttitor pharetra</p>
-                    <a href="#" class="tm-btn text-uppercase">Detail</a>    
-                </div>  
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-
-                <div class="tm-content-box">
-                    <img src="{{ asset('images/tm-img-310x180-2.jpg') }}" alt="Image" class="tm-margin-b-20 img-fluid">
-                    <h4 class="tm-margin-b-20 tm-gold-text">Lorem ipsum dolor #2</h4>
-                    <p class="tm-margin-b-20">Aenean cursus tellus mauris, quis
-                    consequat mauris dapibus id. Donec
-                    scelerisque porttitor pharetra</p>
-                    <a href="#" class="tm-btn text-uppercase">Read More</a>    
-                </div>  
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-
-                <div class="tm-content-box">
-                    <img src="{{asset('images/tm-img-310x180-3.jpg')}}" alt="Image" class="tm-margin-b-20 img-fluid">
-                    <h4 class="tm-margin-b-20 tm-gold-text">Lorem ipsum dolor #3</h4>
-                    <p class="tm-margin-b-20">Aenean cursus tellus mauris, quis
-                    consequat mauris dapibus id. Donec
-                    scelerisque porttitor pharetra</p>
-                    <a href="#" class="tm-btn text-uppercase">Detail</a>    
-                </div>  
-
-            </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
-
-                <div class="tm-content-box">
-                    <img src="{{asset('images/tm-img-310x180-4.jpg')}}" alt="Image" class="tm-margin-b-20 img-fluid">
-                    <h4 class="tm-margin-b-20 tm-gold-text">Lorem ipsum dolor #4</h4>
-                    <p class="tm-margin-b-20">Aenean cursus tellus mauris, quis
-                    consequat mauris dapibus id. Donec
-                    scelerisque porttitor pharetra</p>
-                    <a href="#" class="tm-btn text-uppercase">Read More</a>    
-                </div>  
-
-            </div>
-        </div> <!-- row -->
-
+        {{-- Posts Component --}}
+        <x-fronts.posts :posts="$posts"/>
+        
         <div class="row tm-margin-t-big">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
                 <div class="tm-2-col-left">
@@ -92,20 +41,9 @@
 
                     <div class="tm-2-rows-md-swap">
                         <div class="tm-overflow-auto row tm-2-rows-md-down-2">
-                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <h3 class="tm-gold-text tm-title">
-                                    Categories
-                                </h3>
-                                <nav>
-                                    <ul class="nav">
-                                        <li><a href="#" class="tm-text-link">Tincidunt non faucibus placerat</a></li>
-                                        <li><a href="#" class="tm-text-link">Vestibulum tempor ac lectus</a></li>
-                                        <li><a href="#" class="tm-text-link">Fusce non turpis euismod</a></li>
-                                        <li><a href="#" class="tm-text-link">Nam in augue consectetur</a></li>
-                                        <li><a href="#" class="tm-text-link">Text Link Color #006699</a></li>
-                                    </ul>
-                                </nav>    
-                            </div> <!-- col -->
+
+                            {{-- Categories Component --}}
+                            <x-fronts.categories :categories="$categories"/>
 
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 tm-xs-m-t">
                                 <h3 class="tm-gold-text tm-title">

@@ -28,11 +28,12 @@ class PostValidationRequest extends FormRequest
             'description' => ['required'],
             'image' => ['mimes:jpg,png,jpeg', 'max:6048'],  
             'status' => ['string'] ,     
+            'position' => ['string'] ,     
         ];
     }
     public function messages()
     {
         // return ['title.alpha' => 'the title must be aplhabet'];
-        // return ['image.mimes' => 'the image file must be jpg and png'];
+        return ['image.mimes' => 'the image file must be jpg and png'];
     }
 }

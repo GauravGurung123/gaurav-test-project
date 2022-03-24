@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -14,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -24,7 +27,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('home', compact('users'));
+        $posts = Post::all();
+
+        $categories = Category::all();
+        return view('front.index', compact(['categories', 'posts']));
+    }
+    
+    public function aboutMe()
+    {
+        $userId = Auth::id();
+
+        $user = User::findOrFail($userId);
+
+        return view('front.pages.about-me', compact(['user']));
     }
 }

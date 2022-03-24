@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Category\CategoryController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,10 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', function () {
-    return view('front.index');
-}
-);
+Route::get('/',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::group(['middleware' => 'usercheck:test', 'as' => 'user.'], function(){
 //     Route::get('/user', [UserController::class, 'index'])->name('index'); 
@@ -28,6 +26,7 @@ Route::get('/', function () {
 // });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/about', [App\Http\Controllers\HomeController::class, 'aboutMe'])->name('about');
 
 // User Controller
 Route::get('/user/{id}/edit', [UserController::class, 'edit']);
@@ -36,3 +35,8 @@ Route::delete('/user/{id}/destroy', [App\Http\Controllers\UserController::class,
 
 // Post Controller
 include('post.php');
+
+// Category Controller
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create'); 
+Route::post('/category', [CategoryController::class, 'store']); 
+
