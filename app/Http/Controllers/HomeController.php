@@ -29,8 +29,8 @@ class HomeController extends Controller
     {
         $posts = Post::all();
 
-        $categories = Category::all();
-        return view('front.index', compact(['categories', 'posts']));
+        // $categories = Category::all();
+        return view('front.index', compact(['posts']));
     }
     
     public function aboutMe()

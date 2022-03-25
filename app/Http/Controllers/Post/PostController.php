@@ -23,9 +23,9 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        $categories = Category::all();
+        // $categories = Category::all();
         
-        return view('front.pages.posts', compact(['posts', 'categories']));
+        return view('front.pages.posts', compact(['posts']));
      
     }
 
@@ -36,9 +36,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
+        // $categories = Category::all();
 
-        return view('post.create', compact('categories'));
+        return view('post.create');
     }
 
     /**
